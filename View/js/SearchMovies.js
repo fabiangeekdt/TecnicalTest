@@ -21,7 +21,7 @@ $(document).ready(function(){
 					if(result == 'error'){
 						window.alert("can't Search in this moment");
 					}
-				}
+				});
 		}
 	});
 });

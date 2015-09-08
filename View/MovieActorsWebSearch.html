@@ -2,10 +2,14 @@
 <html>
 	<head>
 		<title>Movie Actors - WebSearch</title>
-	</head>
+		
+		<!-- Scripts -->
+		<script type="text/javascript" src="SearchMovies.js"></script>	</head>
 	<body>
-		<label for="Actor's name*"</label>
-		<input type="text" name="Actor" id="Actor" placeholder="type the name of the actor you want to search."</input></br>
-		<input type="submit" id="Search Movies..." value="send"</input>
+		<form method="post" id="search_form">
+			<label for="Actor's name*"/>
+			<input type="text" name="ctor" id="actor" placeholder="type the name of the actor you want to search."</input></br>
+			<input type="submit" id="search_movies" value="Search"</input>
+		</form>
 	</body>
 </html>

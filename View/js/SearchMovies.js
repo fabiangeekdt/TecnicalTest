@@ -17,11 +17,21 @@ $(document).ready(function(){
 			//also change the button text to searching...
 			$('#search_movies').attr({'disable' : 'true', 'value' : 'Searching...'});
 			
-			$.post("SearchActorByMovie.php", $("#search_form").serialize(), function(result){
+			$.ajax({url: "C:/Users/Administrador/Documents/GitHub/TecnicalTest/Controller/SearchActorByMovie.php", success: function(result){
 					if(result == 'error'){
 						window.alert("can't Search in this moment");
 					}
-				});
+				}
+			});
+						
+			$.post("Controller/SearchActorByMovie.php", $("#search_form").serialize(), function(result){
+					if(result == 'error'){
+						window.alert("can't Search in this moment");
+					}
+			});
+		}
+		if(error == true){
+			window.alert("please fill the fills.");
 		}
 	});
 });

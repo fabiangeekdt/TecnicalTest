@@ -8,10 +8,12 @@
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.min.js"></script>
 		<script type="text/javascript" src="js/SearchMovies.js"></script>	</head>
 	<body>
-		<form method="post" id="search_form">
+		<form method="post" action="SearchActorByMovie.php" id="search_form">
 			<label for="Actor's name*"/>
-			<input type="text" name="ctor" id="actor" placeholder="type the name of the actor you want to search."</input></br>
+			<input type="text" name="actor" id="actor" placeholder="type the name of the actor you want to search."</input></br>
 			<input type="submit" id="search_movies" value="Search"</input>
 		</form>
+		<div id="result">
+		</div>
 	</body>
 </html>

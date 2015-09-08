@@ -22,20 +22,22 @@ $(document).ready(function(){
 			
 			var serializeData = $("#search_form").serialize();
 			
-			request = $.ajax({
+			$.ajax({
 				url: "http://localhost/test/Controller/SearchActorByMovie.php",
 				type: "post",
 				data: serializeData,
-				success: function(data, textStatus, jqXHR)
+				success: function(response, textStatus, jQxhr)
     			{
-        			//data - response from server
-					window.alert("it works.");
+        			$('#result').html(response);
+					window.alert("it Works...");
     			},
     			error: function (jqXHR, textStatus, errorThrown)
     			{
- 					window.alert("dont works.");
+ 					window.alert("jqXHR: " + jqXHR + "textStatus: " + textStatus + "err: " + errorThrown);
 				}
 			});
+			
+			e.preventDefault();
 			
 		}
 		if(error == true){

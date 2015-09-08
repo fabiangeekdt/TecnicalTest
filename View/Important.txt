@@ -1,0 +1,3 @@
+- Find out absolute paths for include.
+- Find out the generic uri for the searchMovies.js file
+- Improve GUI

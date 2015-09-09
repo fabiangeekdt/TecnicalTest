@@ -77,9 +77,7 @@ class Viewer{
 					<p id="actor_error" class="error">Please type a valid actor name</p>
 				</li>
 				</br></br>
-				<li class="clearfix">
-					<input type="submit" id="search_movies" value="Search"</input>
-				</li>
+				<input type="submit" id="search_movies" value="Search"</input>
 			</form>
 		</center>';
 	}

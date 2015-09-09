@@ -11,19 +11,11 @@
 		<script type="text/javascript" src="js/SearchMovies.js"></script>	
 	</head>
 	<body style="background-color:lightgrey; ">
-		<center>
-			<form method="post" id="search_form" >
-				<label style="font-size:300%">ACTOR's WEBSEARCH</label>
-				</br></br>
-				<li class="clearfix"> 
-					<label for="actor">Actor´s name:</label>
-					<input type="text" name="actor" id="actor"  placeholder="type the name of the actor you want to search."</input>
-					<p id="actor_error" class="error">Please type a valid actor name</p>
-				</li>
-				</br></br>
-				<input type="submit" id="search_movies" value="Search"</input>
-			</form>
-		</center>
+		<?php
+			include("Viewer.php");
+			$init_view = new Viewer();
+			echo $init_view->onInit();			
+		?>
 		<div id="result">
 		</div>
 	</body>

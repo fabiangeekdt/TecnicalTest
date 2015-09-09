@@ -1,27 +1,64 @@
 <?php
+/**
+ * 	This php file handles all the operation for returning 
+ *	the movie info data as requested 
+ *
+ * 	@author Fabian Moreno
+ * 	@version 0.1
+ * 	@date 08/09/2015	
+ * 	@copyright Licensed under BSD (http://www.opensource.org/licenses/bsd-license.php)
+ */
 	header("access-control-allow-origin: *");
-	
+
 	include("init.php");
 	include("tmdb-api.php");
+	include("OrderItem.php");
+	include("../View/Viewer.php");
 	
+	//declaring variables
 	$actor = $_POST['actor']; 
-	
+	$actorid;
+	$movieRoles = array();
+	$arr_actedmovies = array();
+	$arr2 = array();
 	
 	//instantie TMDB API with my key API
 	$tmdb = new TMDB($apikey, 'en', true);
 	//search for the indicate person
 	$persons = $tmdb->searchPerson($actor);
+	
+	//look for the searched person in the array
 	foreach($persons as $person){
-		echo '<li>'. $person->getName() .' (<a href="https://www.themoviedb.org/person/'. $person->getID() .'">'. $person->getID() .'</a>)</li>';
-		
-		//Get all the movie roles
-			//get all the movie tittles in an array
-				//Call a function for showin the tittles in chronological order (create a function that compares dates in another .php file)
-				//echo the result to the .html site
-			
+		//Get the Actor ID
+		$actorid = $person->getID();
 	}
 	
+	if(empty($actorid)){
+			$htmlout = new Viewer();
+			echo $htmlout->getEchoNoResults();
+	}
+	else{	 		
+		//get the Actor 
+		$person = $tmdb->getPerson($actorid);		
+		//Get all the movie roles
+		$movieRoles = $person->getMovieRoles();		
+		//get all the movies tittle and release date in an array
+		foreach($movieRoles as $movieRole){
+			//save records in an array
+			$arr2["movietitle"] = $movieRole->getMovieTitle();
+			$arr2["releasedate"] = $movieRole->getMovieReleaseDate();
+			array_push($arr_actedmovies, $arr2); 
+		}
 		
-
+		//Instatie OrderItem for ordering the array movie info data
+		$order = new OrderItem($arr_actedmovies);
+		//Call a function for showing the tittles in chronological order
+		$descending_array = $order->getorder();
+		
+		//echo the result to the .html site
+		$htmlout = new Viewer();
+		echo $htmlout->getEchoResults($descending_array);
+		//use it just for testing issues
+		//echo var_dump($descending_array);
+	}
 ?>
-	

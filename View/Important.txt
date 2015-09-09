@@ -1,3 +1,5 @@
-- Find out absolute paths for include.
-- Find out the generic uri for the searchMovies.js file
-- Improve GUI
+- Find out absolute paths for include. check
+- Find out the generic uri for the searchMovies.js file check
+- Improve GUI - check
+- manejar excepciones(espacio en blanco) check - to test double check
+- deploy

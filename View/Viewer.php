@@ -71,10 +71,15 @@ class Viewer{
 			<form method="post" id="search_form" >
 				<label style="font-size:300%">ACTOR´s WEBSEARCH</label>
 				</br></br>
-				<label for="actor">Actor´s name:</label>
-				<input type="text" name="actor" id="actor"  placeholder="type the name of the actor you want to search."</input>
+				<li class="clearfix"> 
+					<label for="actor">Actor´s name:</label>
+					<input type="text" name="actor" id="actor"  placeholder="type the name of the actor you want to search."</input>
+					<p id="actor_error" class="error">Please type a valid actor name</p>
+				</li>
 				</br></br>
-				<input type="submit" id="search_movies" value="Search"</input>
+				<li class="clearfix">
+					<input type="submit" id="search_movies" value="Search"</input>
+				</li>
 			</form>
 		</center>';
 	}

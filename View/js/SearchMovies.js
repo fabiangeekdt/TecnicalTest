@@ -10,14 +10,22 @@ $(document).ready(function(){
 		var actor = $('#actor').val();
 		var error = false;
 		
-		if(actor.length == 0)
+		if(actor.length == 0){
 			error = true;
+			$('#actor_error').fadeIn(500);
+		}else{
+			$('#actor_error').fadeOut(500);
+		}
 
 		var patt1 = /\d/g;
 		var result = actor.match(patt1);			
-		if(result != null)
+		if(result != null){
 			error = true;
-						
+			$('#actor_error').fadeIn(500);
+		}else{
+			$('#actor_error').fadeOut(500);
+		}
+			
 		//Validate if there's empty variables	
 		if(error == false){
 			//disable the Search button to avoid spamming
@@ -34,17 +42,16 @@ $(document).ready(function(){
 				success: function(response, textStatus, jQxhr)
     			{
         			$('#result').html(response);
+					$('#search_movies').attr({'disable' : 'true', 'value' : 'Search'});
     			},
     			error: function (jqXHR, textStatus, errorThrown)
     			{
  					window.alert("jqXHR: " + jqXHR + "textStatus: " + textStatus + "err: " + errorThrown);
 				}
-			});
-
-			
+			});	
 		}
-		if(error == true){
-			window.alert("please fill the fills.");
-		}
+		//if(error == true){
+		//	window.alert("please fill the fills.");
+		//}
 	});
 });

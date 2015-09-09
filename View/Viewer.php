@@ -23,10 +23,6 @@ class Viewer{
 	public function __construct(){
 	}
 	
-	//public function __construct($_args){
-	//	$this->_args = $_args;
-	//}
-	
 	/** 
     *  Get the result echo for the client, this receive a string 
     *

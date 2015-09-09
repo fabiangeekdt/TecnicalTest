@@ -2,10 +2,6 @@ var request;
 
 $(document).ready(function(){
 	$('#search_movies').click(function(e){
-		
-		//stop the form from being submitted
-		if (e.defaultPrevented){}
-		
 		//declare the variables send from the page
 		var actor = $('#actor').val();
 		var error = false;
@@ -35,7 +31,7 @@ $(document).ready(function(){
  					window.alert("jqXHR: " + jqXHR + "textStatus: " + textStatus + "err: " + errorThrown);
 				}
 			});
-			
+			//stop the form from being submitted
 			e.preventDefault();
 			
 		}

@@ -1,8 +1,18 @@
 <?php
+/**
+ * 	This php file handles all the operation for returning 
+ *	the movie info data as requested 
+ *
+ * 	@author Fabian Moreno
+ * 	@version 0.1
+ * 	@date 08/09/2015	
+ * 	@copyright Licensed under BSD (http://www.opensource.org/licenses/bsd-license.php)
+ */
 	header("access-control-allow-origin: *");
 
 	include("init.php");
 	include("tmdb-api.php");
+	include("OrderItem.php");
 	
 	//declaring variables
 	$actor = $_POST['actor']; 
@@ -32,12 +42,17 @@
 		$arr2["movietitle"] = $movieRole->getMovieTitle();
 		$arr2["releasedate"] = $movieRole->getMovieReleaseDate();
 		array_push($arr_actedmovies, $arr2); 
+		echo '<li>'. $movieRole->getMovieTitle() .' (realese: '. $movieRole->getMovieReleaseDate() .')</li>';
 	}
 	
-	echo var_dump($arr_actedmovies);
-
-			//Call a function for showin the tittles in chronological order (create a function that compares dates in another .php file)
-			//echo the result to the .html site
+	//Instatie OrderItem for ordering the array movie info data
+	$order = new OrderItem($arr_actedmovies);
+	//Call a function for showing the tittles in chronological order
+	$descending_array = $order->getorder();
+	
+	//echo the result to the .html site
+	
+	echo var_dump($descending_array);
 			
 	//to remember
 	//echo '<li>'. $movieRole->getMovieTitle() .' (realese: '. $movieRole->getMovieReleaseDate() .')</li>'; - line 34

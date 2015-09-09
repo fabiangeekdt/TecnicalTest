@@ -29,7 +29,6 @@ $(document).ready(function(){
 				success: function(response, textStatus, jQxhr)
     			{
         			$('#result').html(response);
-					window.alert("it Works...");
     			},
     			error: function (jqXHR, textStatus, errorThrown)
     			{

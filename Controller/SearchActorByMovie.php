@@ -13,6 +13,7 @@
 	include("init.php");
 	include("tmdb-api.php");
 	include("OrderItem.php");
+	include("../View/Viewer.php");
 	
 	//declaring variables
 	$actor = $_POST['actor']; 
@@ -32,29 +33,32 @@
 		$actorid = $person->getID();
 	}
 	
-	//get the Actor 
-	$person = $tmdb->getPerson($actorid);		
-	//Get all the movie roles
-	$movieRoles = $person->getMovieRoles();		
-	//get all the movies tittle and release date in an array
-	foreach($movieRoles as $movieRole){
-		//save records in an array
-		$arr2["movietitle"] = $movieRole->getMovieTitle();
-		$arr2["releasedate"] = $movieRole->getMovieReleaseDate();
-		array_push($arr_actedmovies, $arr2); 
-		echo '<li>'. $movieRole->getMovieTitle() .' (realese: '. $movieRole->getMovieReleaseDate() .')</li>';
+	if(empty($actorid)){
+			$htmlout = new Viewer();
+			echo $htmlout->getEchoNoResults();
 	}
-	
-	//Instatie OrderItem for ordering the array movie info data
-	$order = new OrderItem($arr_actedmovies);
-	//Call a function for showing the tittles in chronological order
-	$descending_array = $order->getorder();
-	
-	//echo the result to the .html site
-	
-	echo var_dump($descending_array);
-			
-	//to remember
-	//echo '<li>'. $movieRole->getMovieTitle() .' (realese: '. $movieRole->getMovieReleaseDate() .')</li>'; - line 34
-	//echo '<li>'. $person->getName() .' (<a href="https://www.themoviedb.org/person/'. $person->getID() .'">'. $person->getID() .'</a>)</li>'; - line 21
+	else{	 		
+		//get the Actor 
+		$person = $tmdb->getPerson($actorid);		
+		//Get all the movie roles
+		$movieRoles = $person->getMovieRoles();		
+		//get all the movies tittle and release date in an array
+		foreach($movieRoles as $movieRole){
+			//save records in an array
+			$arr2["movietitle"] = $movieRole->getMovieTitle();
+			$arr2["releasedate"] = $movieRole->getMovieReleaseDate();
+			array_push($arr_actedmovies, $arr2); 
+		}
+		
+		//Instatie OrderItem for ordering the array movie info data
+		$order = new OrderItem($arr_actedmovies);
+		//Call a function for showing the tittles in chronological order
+		$descending_array = $order->getorder();
+		
+		//echo the result to the .html site
+		$htmlout = new Viewer();
+		echo $htmlout->getEchoResults($descending_array);
+		//use it just for testing issues
+		//echo var_dump($descending_array);
+	}
 ?>

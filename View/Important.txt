@@ -1,6 +1,7 @@
 - Find out absolute paths for include.
 - Find out the generic uri for the searchMovies.js file
-- Improve GUI
+- Improve GUI - check
+- manejar excepciones
 
 - keep this code safe.
 		//sorting the array with the movie info data

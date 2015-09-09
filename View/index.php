@@ -21,9 +21,9 @@
 		</center>
 		-->
 		<?php
-			include("Viewer.php"");
-			init_view = new Viewer();
-			echo init_view->onInit();			
+			include("Viewer.php");
+			$init_view = new Viewer();
+			echo $init_view->onInit();			
 		?>
 		<div id="result">
 		</div>

@@ -28,8 +28,18 @@ class Viewer{
     *
     *  @return string
     */
-	public function getEchoNoResults(){
-		$varHtml = '<center><h2><p>We´re sorry... The actor searched does not exist in the DataBase</p></h2></center>'; 
+	public function getEchoNoResults($args){
+		switch($args){
+			case 1:
+				$varHtml = '<center><h2><p>We´re sorry... The actor searched does not exist in the DataBase</p></h2></center>';
+				break;
+			case 2:
+				$varHtml = '<center><h2><p>The actor searched does not have a movie list in the DataBase</p></h2></center>';
+				break;
+			default:
+				$varHtml = '<center><h2><p>Oops... something went wrong.</p></h2></center>';
+		}
+		//$varHtml = '<center><h2><p>We´re sorry... The actor searched does not exist in the DataBase</p></h2></center>'; 
 		return $varHtml;
 	}
 	

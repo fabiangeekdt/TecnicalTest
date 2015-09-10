@@ -35,19 +35,26 @@
 	
 	if(empty($actorid)){
 			$htmlout = new Viewer();
-			echo $htmlout->getEchoNoResults();
+			echo $htmlout->getEchoNoResults(1);
 	}
 	else{	 		
 		//get the Actor 
 		$person = $tmdb->getPerson($actorid);		
 		//Get all the movie roles
 		$movieRoles = $person->getMovieRoles();		
+		//validate if the actor has a movies stored in the database
+		if(count($movieRoles) > 0){
 		//get all the movies tittle and release date in an array
 		foreach($movieRoles as $movieRole){
 			//save records in an array
 			$arr2["movietitle"] = $movieRole->getMovieTitle();
 			$arr2["releasedate"] = $movieRole->getMovieReleaseDate();
 			array_push($arr_actedmovies, $arr2); 
+		}
+		}
+		else{
+			$htmlout = new Viewer();
+			echo $htmlout->getEchoNoResults(2);
 		}
 		
 		//Instatie OrderItem for ordering the array movie info data

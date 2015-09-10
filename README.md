@@ -2,7 +2,7 @@
 
 This webApplication lets you to Search movies by actor and show the results in a chronological order.
 
-the software was made using: PHPv5.4.3, JavaScript, and the php library tmdb_v3-PHP-API </br> (to see the code of the API please clic the link below) </br>
+the software was made using: PHPv5.4.3, JavaScript, and the php library tmdb_v3-PHP-API </br> (to see the code of the API please click the link below) </br>
 https://github.com/pixelead0/tmdb_v3-PHP-API-.git
 
 to view the webApplication please click in the link below </br> http://geekdt.com/AlertLogicTest/View/index.php

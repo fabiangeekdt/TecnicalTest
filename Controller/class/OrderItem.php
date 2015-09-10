@@ -31,7 +31,6 @@ class OrderItem{
      */
     public function getorder(){
         $arr_actedmovies = $this->_datatoorder;
-        
         //sorting the array with the movie info data
         usort($arr_actedmovies,
             function ($a, $b) {
@@ -45,7 +44,6 @@ class OrderItem{
                 return $ad < $bd ? 1 : -1;
             }
         );
-        
         //reverse the array so it can be watch in a descending order       
         return array_reverse($arr_actedmovies);;
     }         

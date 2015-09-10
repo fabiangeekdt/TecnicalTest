@@ -12,7 +12,7 @@
 	</head>
 	<body style="background-color:lightgrey; ">
 		<?php
-			include("Viewer.php");
+			include("../Controller/class/Viewer.php");
 			$init_view = new Viewer();
 			echo $init_view->onInit();			
 		?>

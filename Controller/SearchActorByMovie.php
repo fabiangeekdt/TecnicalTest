@@ -11,9 +11,9 @@
 	header("access-control-allow-origin: *");
 
 	include("init.php");
-	include("tmdb-api.php");
-	include("OrderItem.php");
-	include("../View/Viewer.php");
+	include("class/tmdb-api.php");
+	include("class/OrderItem.php");
+	include("class/Viewer.php");
 	
 	//declaring variables
 	$actor = $_POST['actor']; 

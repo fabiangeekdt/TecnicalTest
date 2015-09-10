@@ -58,7 +58,7 @@ $(document).ready(function(){
     			},
     			error: function (jqXHR, textStatus, errorThrown)
     			{
- 					window.alert("jqXHR: " + jqXHR + "textStatus: " + textStatus + "err: " + errorThrown);
+ 					$s('#result').html("jqXHR: " + jqXHR + "textStatus: " + textStatus + "err: " + errorThrown);
 				}
 			});	
 		}
